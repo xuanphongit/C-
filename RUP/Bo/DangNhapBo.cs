@@ -31,14 +31,14 @@ namespace RUP.Bo
             {
                 dangnhap.MatKhau = matkhaumoi;
                 db.SubmitChanges();
-                return true;
+               ;
             }
             catch (Exception)
             {
 
-                throw;
+                return false;
             }
-            return false;
+            return true;
         }
 
         public String DangKi(string tentaikhoan,string matkhau)

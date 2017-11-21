@@ -16,7 +16,8 @@ namespace HDTT3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDangNhap());
+            Bo.DungChung.f = new frmCauHinh();
+            Application.Run(Bo.DungChung.f);
         }
     }
 }

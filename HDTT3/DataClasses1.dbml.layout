@@ -20,7 +20,7 @@
         <elementListCompartment Id="3d5babf0-6c36-4107-83a8-eeae7d3dedb9" absoluteBounds="0.51500000000000012, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 4.60179768880208); (3.25 : 4.60179768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.5 : 4.83099609375); (3.25 : 4.83099609375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataClasses1DataContext/hoadon/hoadon_ChiTietHoaDon" />
       <nodes>
         <classShapeMoniker Id="c6fbbb11-1d01-42d9-8ead-cf831b48c20a" />
@@ -33,7 +33,7 @@
         <elementListCompartment Id="f11831e2-4007-475e-8ad5-1ab01133cdf8" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.09375 : 2.27089680989583); (1.09375 : 3.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(0.84375 : 2.27089680989583); (0.84375 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataClasses1DataContext/KhachHang/KhachHang_hoadon" />
       <nodes>
         <classShapeMoniker Id="3060f648-52cc-485e-8ec4-ebb454482c41" />
@@ -72,5 +72,11 @@
         <classShapeMoniker Id="013d05bf-ad39-4b76-ab0a-50ba588c7871" />
       </nodes>
     </associationConnector>
+    <classShape Id="04695c14-7339-4e86-a136-020101334a0e" absoluteBounds="1.25, 2.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClasses1DataContext/Test" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fdd81bde-a537-423b-b481-9e73b078c421" absoluteBounds="1.2650000000000001, 2.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

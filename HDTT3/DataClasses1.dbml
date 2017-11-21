@@ -66,4 +66,13 @@
       <Association Name="loai_sach" Member="loai" ThisKey="maloai" OtherKey="maloai" Type="loai" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
+  <Table Name="dbo.Test" Member="Tests">
+    <Type Name="Test">
+      <Column Name="tenloai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoSach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongSoLuong" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MinGia" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

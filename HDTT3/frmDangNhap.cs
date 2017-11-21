@@ -28,7 +28,7 @@ namespace HDTT3
             }
             else
             {
-                MessageBox.Show("Đăng Kí Thất bại, thử lại", "Lổi đăng nhập");
+                MessageBox.Show("Đăng Kí Thất bại, thử lại", "Lổi đăng kí");
             }
         }
 
@@ -56,6 +56,12 @@ namespace HDTT3
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Bo.DungChung.f.Dispose();
 
         }
     }

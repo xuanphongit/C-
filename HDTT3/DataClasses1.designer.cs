@@ -135,6 +135,14 @@ namespace HDTT3
 				return this.GetTable<sach>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Test> Tests
+		{
+			get
+			{
+				return this.GetTable<Test>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ChiTietHoaDon")]
@@ -1349,6 +1357,105 @@ namespace HDTT3
 		{
 			this.SendPropertyChanging();
 			entity.sach = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Test")]
+	public partial class Test
+	{
+		
+		private string _tenloai;
+		
+		private System.Nullable<int> _SoSach;
+		
+		private System.Nullable<long> _TongSoLuong;
+		
+		private System.Nullable<long> _MinGia;
+		
+		private System.Nullable<long> _TongTien;
+		
+		public Test()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenloai", DbType="NVarChar(50)")]
+		public string tenloai
+		{
+			get
+			{
+				return this._tenloai;
+			}
+			set
+			{
+				if ((this._tenloai != value))
+				{
+					this._tenloai = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoSach", DbType="Int")]
+		public System.Nullable<int> SoSach
+		{
+			get
+			{
+				return this._SoSach;
+			}
+			set
+			{
+				if ((this._SoSach != value))
+				{
+					this._SoSach = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongSoLuong", DbType="BigInt")]
+		public System.Nullable<long> TongSoLuong
+		{
+			get
+			{
+				return this._TongSoLuong;
+			}
+			set
+			{
+				if ((this._TongSoLuong != value))
+				{
+					this._TongSoLuong = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinGia", DbType="BigInt")]
+		public System.Nullable<long> MinGia
+		{
+			get
+			{
+				return this._MinGia;
+			}
+			set
+			{
+				if ((this._MinGia != value))
+				{
+					this._MinGia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="BigInt")]
+		public System.Nullable<long> TongTien
+		{
+			get
+			{
+				return this._TongTien;
+			}
+			set
+			{
+				if ((this._TongTien != value))
+				{
+					this._TongTien = value;
+				}
+			}
 		}
 	}
 }

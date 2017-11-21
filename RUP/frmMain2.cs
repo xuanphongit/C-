@@ -19,5 +19,15 @@ namespace RUP
         {
 
         }
+
+        private void metroTabPanel6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupPanel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
