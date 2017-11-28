@@ -27,7 +27,7 @@ namespace BaiThucHanh2ADO.NET.Model
 
         public int Add(long maxSoCtHd, string maHang, long maHd, long soLuongMua, long  thanhTien )
         {
-            string sql = "insert into ChiTietHoaDon values(@MaCtHd,@@MaHang,@SoLuongMua,@ThanhTien,@MaHD)";
+            string sql = "insert into ChiTietHoaDon values(@MaCtHd,@MaHang,@SoLuongMua,@ThanhTien,@MaHD)";
             SqlCommand cmd=new SqlCommand(sql,DungChung.Cn);
             cmd.Parameters.Add(new SqlParameter("@MaCtHd", maxSoCtHd));
             cmd.Parameters.Add(new SqlParameter("@MaHang", maHang));

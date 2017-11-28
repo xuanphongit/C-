@@ -98,9 +98,9 @@ namespace BaiThucHanh2ADO.NET.Presentation
 
         private void buttonX5_Click(object sender, EventArgs e)
         {
-            FrmInNhanVien f=new FrmInNhanVien();
+          //  FrmInNhanVien f=new FrmInNhanVien();
             Hide();
-            f.ShowDialog();
+       //     f.ShowDialog();
             Show();
         }
 

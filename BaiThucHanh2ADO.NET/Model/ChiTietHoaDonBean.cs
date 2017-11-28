@@ -2,11 +2,11 @@
 {
     public class ChiTietHoaDonBean
     {
-        public long MaCthd { get; private set; }
-        public string MaHang { get; private set; }
-        public long SoLuongMua { get;private set; }
-        public long ThanhTien { get;private set; }
-        public long MaHd { get;private set; }
+        public long MaCthd { get;  set; }
+        public string MaHang { get;  set; }
+        public long SoLuongMua { get; set; }
+        public long ThanhTien { get; set; }
+        public long MaHd { get; set; }
 
         public ChiTietHoaDonBean(long maCthd, string maHang, long soLuongMua, long thanhTien, long maHd)
         {

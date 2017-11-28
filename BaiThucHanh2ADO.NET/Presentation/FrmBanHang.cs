@@ -25,6 +25,7 @@ namespace BaiThucHanh2ADO.NET.Presentation
         List<BanBean> _danhSachBan=new List<BanBean>();
         List<HoaDonBean> _danhSacHoaDonBeans=new List<HoaDonBean>();
         List<ChiTietHoaDonBean> _danhSaChiTietHoaDonBeans=new List<ChiTietHoaDonBean>();
+        
         public static string Tenban, Maban;
         private void label4_Click(object sender, EventArgs e)
         {
@@ -71,6 +72,7 @@ namespace BaiThucHanh2ADO.NET.Presentation
 
                 txtGia.Text = hangBean.Gia.ToString();
                 txtSLTrongKho.Text = hangBean.SoLuong.ToString();
+               
                 if (hangBean.SoLuong==0)
                 {
                     MessageBox.Show(Resources.FrmBanHang_CboTenHang_SelectedIndexChanged_Hết_hàng_);
@@ -82,23 +84,25 @@ namespace BaiThucHanh2ADO.NET.Presentation
         private void btnBan_Click(object sender, EventArgs e)
         {
             string maHang = CboTenHang.SelectedValue.ToString();
+            
             HangBean hangBean = _hangBo.GetHang(_danhSachHang, maHang);
             bool kq=_hangBo.MuaHang(_danhSachHang, maHang, long.Parse(txtSLTrongKho.Text), long.Parse(txtSLMua.Text));
-            long maxSoHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.ValueMember);
-            if (maxSoHd!=1)
+            //OK
+            long maxSoHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());
+            if (maxSoHd==0)
             {
                
-                _hoaDonBo.Add(_danhSacHoaDonBeans, maxSoHd+1, DungChung.NhanVien, LstBan.ValueMember, DateTime.Now, false);
+                _hoaDonBo.Add(_danhSacHoaDonBeans, maxSoHd+1, DungChung.NhanVien, LstBan.SelectedValue.ToString(), DateTime.Now, false);
             }
             long maxSoCtHd = 1;
-            if (!_danhSaChiTietHoaDonBeans.Any())
+            if (_danhSaChiTietHoaDonBeans.Any())
             {
                 maxSoCtHd = _chiTietHoaDonBo.GetMax(_danhSaChiTietHoaDonBeans);
                 maxSoCtHd++;
             }
             //Lay so hoa don cua bang hoa don
-            long shd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.ValueMember);
-            _chiTietHoaDonBo.Add(_danhSaChiTietHoaDonBeans,maxSoCtHd,CboTenHang.SelectedValue.ToString(),shd,int.Parse(txtSLMua.Text),int.Parse(txtSLMua.Text)*long.Parse(txtGia.Text));
+            long shd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());
+            _chiTietHoaDonBo.Add(_danhSaChiTietHoaDonBeans,maxSoCtHd,CboTenHang.SelectedValue.ToString(),shd,long.Parse(txtSLMua.Text),long.Parse(txtSLMua.Text)*long.Parse(txtGia.Text));
             HienThiHoaDon();
 
         }
@@ -112,7 +116,12 @@ namespace BaiThucHanh2ADO.NET.Presentation
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
+            //FrmInHoaDon f=new FrmInHoaDon();
+            Hide();
+            //f.ShowDialog();
 
+            Show();
+            
         }
 
         public void HienThiHoaDon()

@@ -25,7 +25,7 @@ namespace BaiThucHanh2ADO.NET.Bo
             }
             else
             {
-                return 1;
+                return 0;
             }
         }
 

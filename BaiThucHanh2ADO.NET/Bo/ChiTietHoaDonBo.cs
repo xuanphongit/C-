@@ -13,6 +13,14 @@ namespace BaiThucHanh2ADO.NET.Bo
             return _chiTietHoaDonDao.GetList();
         }
 
+        public List<ChiTietHoaDonBean> GetListByMaHd(List<ChiTietHoaDonBean>danhSach, long maHd)
+        {
+            var q = from s in danhSach
+                where s.MaHd == maHd
+                select s;
+            List<ChiTietHoaDonBean> kq = q.ToList();
+            return kq;
+        }
         public long GetMax(List<ChiTietHoaDonBean> danhSach)
         {
             long maxSoCtHd = danhSach.Max(p => p.MaCthd);

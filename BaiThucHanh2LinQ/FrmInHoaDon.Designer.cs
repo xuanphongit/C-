@@ -56,9 +56,7 @@
 
         #endregion
 
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
        
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer2;
-        private InHoaDon2 InHoaDon2;
+      
     }
 }
