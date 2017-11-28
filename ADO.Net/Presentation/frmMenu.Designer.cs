@@ -1,6 +1,6 @@
 ﻿namespace ADO.Net.Presentation
 {
-    partial class frmMenu
+    partial class FrmMenu
     {
         /// <summary>
         /// Required designer variable.

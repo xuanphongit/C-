@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ADO.Net.Presentation
 {
-    public partial class frmInLoai : Form
+    public partial class FrmInLoai : Form
     {
-        public frmInLoai()
+        public FrmInLoai()
         {
             InitializeComponent();
         }
@@ -21,7 +21,7 @@ namespace ADO.Net.Presentation
         {
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(
-                new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", frmLoai.LstIn));
+                new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", FrmLoai.LstIn));
             this.reportViewer1.RefreshReport();
         }
     }

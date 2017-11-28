@@ -1,6 +1,6 @@
 ﻿namespace ADO.Net.Presentation
 {
-    partial class frmLoai
+    partial class FrmLoai
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,6 +135,7 @@
             this.button7.TabIndex = 2;
             this.button7.Text = "Import";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label1
             // 
@@ -155,6 +157,12 @@
             this.label2.Text = "Ten Loai";
             this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Multiselect = true;
+            this.openFileDialog1.HelpRequest += new System.EventHandler(this.button7_Click);
+            // 
             // frmLoai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,7 +180,7 @@
             this.Controls.Add(this.txtTenLoai);
             this.Controls.Add(this.txtMaLoai);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "frmLoai";
+            this.Name = "FrmLoai";
             this.Text = "Loai";
             this.Load += new System.EventHandler(this.frmLoai_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -195,5 +203,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

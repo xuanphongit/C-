@@ -33,11 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="ExcelDataReader, Version=3.2.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.2.0\lib\net45\ExcelDataReader.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bo\KhachHangBo.cs" />
     <Compile Include="Bo\LoaiBo.cs" />
     <Compile Include="Bo\SachBo.cs" />
     <Compile Include="Form1.cs">
@@ -59,6 +66,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\DungChung.cs" />
+    <Compile Include="Model\KhachHangBean.cs" />
+    <Compile Include="Model\KhachHangDao.cs" />
     <Compile Include="Model\LoaiBean.cs" />
     <Compile Include="Model\LoaiDao.cs" />
     <Compile Include="Model\SachBean.cs" />
@@ -87,6 +96,12 @@
     <Compile Include="Presentation\frmLoai.Designer.cs">
       <DependentUpon>frmLoai.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,11 +113,17 @@
     <EmbeddedResource Include="Presentation\frmCauHinh.resx">
       <DependentUpon>frmCauHinh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmDangNhap.resx">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmInLoai.resx">
       <DependentUpon>frmInLoai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmLoai.resx">
       <DependentUpon>frmLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Report1.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -113,7 +134,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\ADO.Net.Model.LoaiBean.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

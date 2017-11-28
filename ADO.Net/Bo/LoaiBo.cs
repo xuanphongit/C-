@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ADO.Net.Model;
 
 namespace ADO.Net.Bo
 {
     public class LoaiBo
     {
-        LoaiDao loai=new LoaiDao();
-        public List<LoaiBean> getloai()
+        LoaiDao _loai=new LoaiDao();
+        public List<LoaiBean> Getloai()
         {
-            return loai.getloai();
+            return _loai.Getloai();
         }
         public List<LoaiBean> Add(List<LoaiBean> ds,string maloai,string tenloai,out bool kq)
         {
@@ -23,7 +20,7 @@ namespace ADO.Net.Bo
             if (q.Count()==0)
             {
                 //Them vao csdl
-                loai.Add(maloai, tenloai);
+                _loai.Add(maloai, tenloai);
                 //them vao bo nho
                 LoaiBean loai2 = new LoaiBean(maloai, tenloai);
                 ds.Add(loai2);
@@ -42,10 +39,11 @@ namespace ADO.Net.Bo
             var q = from l in ds
                     where l.Maloai.Equals(maloai)
                     select l;
-            if (q.Count()==1)
+            var loaiBeans = q as LoaiBean[] ?? q.ToArray();
+            if (loaiBeans.Count()==1)
             {
-                loai.Xoa(maloai);
-                ds.Remove(q.First());
+                _loai.Xoa(maloai);
+                ds.Remove(loaiBeans.First());
                 kq = true;
             }
             else
@@ -60,10 +58,11 @@ namespace ADO.Net.Bo
             var q = from l in ds
                     where l.Maloai.Equals(maloai)
                     select l;
-            if (q.Count()==1)       
+            var loaiBeans = q as IList<LoaiBean> ?? q.ToList();
+            if (loaiBeans.Count()==1)       
             {
-                loai.Update(maloai, tenloai);
-                q.First().Tenloai = tenloai;
+                _loai.Update(maloai, tenloai);
+                loaiBeans.First().Tenloai = tenloai;
                 kq = true;
             }
             else
@@ -74,11 +73,10 @@ namespace ADO.Net.Bo
         }
         public List<LoaiBean> TimKiem(List<LoaiBean> ds,string tenloai)
         {
-            List<LoaiBean> lstTimKiem = new List<LoaiBean>();
             var q = from l in ds
                     where l.Tenloai.Contains(tenloai)
                     select l;
-            lstTimKiem = q.ToList();
+            var lstTimKiem = q.ToList();
             return lstTimKiem;
         }
     }

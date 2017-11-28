@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
 namespace ADO.Net.Presentation
 {
-    public partial class frmCauHinh : Form
+    public partial class FrmCauHinh : Form
     {
-        public frmCauHinh()
+        public FrmCauHinh()
         {
             InitializeComponent();
         }
@@ -24,10 +17,10 @@ namespace ADO.Net.Presentation
             {
                 Model.DungChung dc = new Model.DungChung();
                 dc.KetNoi(txtSv.Text,txtDb.Text, txtUn.Text, txtPass.Text);
-                frmLoai f = new frmLoai();
-                this.Hide();
+                FrmLogin f = new FrmLogin();
+                Hide();
                 f.ShowDialog();
-                this.Close();
+                Close();
             }
             catch (Exception tt)
             {

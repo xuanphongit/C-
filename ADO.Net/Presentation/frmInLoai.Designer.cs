@@ -1,6 +1,6 @@
 ﻿namespace ADO.Net.Presentation
 {
-    partial class frmInLoai
+    partial class FrmInLoai
     {
         /// <summary>
         /// Required designer variable.
@@ -57,7 +57,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 352);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "frmInLoai";
+            this.Name = "FrmInLoai";
             this.Text = "frmInLoai";
             this.Load += new System.EventHandler(this.frmInLoai_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LoaiBeanBindingSource)).EndInit();

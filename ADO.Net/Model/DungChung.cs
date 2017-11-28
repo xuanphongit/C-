@@ -9,12 +9,12 @@ namespace ADO.Net.Model
 {
     public class DungChung
     {
-        public static SqlConnection cn;
-        public void KetNoi(String Sv,String Db,String Un,String Pass)
+        public static SqlConnection Cn;
+        public void KetNoi(String sv,String db,String un,String pass)
         {
-            String st =string.Format( @"Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}",Sv,Db,Un,Pass);
-            cn = new SqlConnection(st);
-            cn.Open();
+            String st =string.Format( @"Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}",sv,db,un,pass);
+            Cn = new SqlConnection(st);
+            Cn.Open();
         }
 
     }

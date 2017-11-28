@@ -16,7 +16,7 @@ namespace ADO.Net
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Presentation.frmCauHinh());
+            Application.Run(new Presentation.FrmCauHinh());
         }
     }
 }

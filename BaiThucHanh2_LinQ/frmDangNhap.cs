@@ -20,16 +20,16 @@ namespace BaiThucHanh2_LinQ
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             bo.DungChung ch = new bo.DungChung();
-            var q = from p in bo.DungChung.db.NHanViens
+            var q = from p in bo.DungChung.Db.NHanViens
                     where p.Manv == txtMaNV.Text && p.MatKhau == txtPass.Text
                     select p;
             if (q.Count() == 0)
                 MessageBox.Show("Đăng nhập không thành công");
             else
             { //Lưu lại các thông tin của nhân viên đăng nhập
-                bo.DungChung.manv = txtMaNV.Text;
-                bo.DungChung.hoten = q.First().HoTen;
-                bo.DungChung.quyen = q.First().Quyen;
+                bo.DungChung.Manv = txtMaNV.Text;
+                bo.DungChung.Hoten = q.First().HoTen;
+                bo.DungChung.Quyen = q.First().Quyen;
                 frmMenu f = new frmMenu();
                 this.Hide();
                 f.ShowDialog();

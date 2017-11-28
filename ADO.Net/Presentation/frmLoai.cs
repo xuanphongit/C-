@@ -11,19 +11,19 @@ using ADO.Net.Bo;
 
 namespace ADO.Net.Presentation
 {
-    public partial class frmLoai : Form
+    public partial class FrmLoai : Form
     {
-        public frmLoai()
+        public FrmLoai()
         {
             InitializeComponent();
         }
-        List<Model.LoaiBean> ds;
-        LoaiBo loai = new LoaiBo();
+        List<Model.LoaiBean> _ds;
+        LoaiBo _loai = new LoaiBo();
         public static List<Model.LoaiBean> LstIn = new List<Model.LoaiBean>();
         private void frmLoai_Load(object sender, EventArgs e)
         {
-            ds = loai.getloai();
-            Reset(ds);
+            _ds = _loai.Getloai();
+            Reset(_ds);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -40,9 +40,9 @@ namespace ADO.Net.Presentation
             else
             {
                 bool kq = true;
-                loai.Add(ds, txtMaLoai.Text, txtTenLoai.Text, out kq);
+                _loai.Add(_ds, txtMaLoai.Text, txtTenLoai.Text, out kq);
                 ThongBaoKetQua(kq);
-                Reset(ds);
+                Reset(_ds);
             }
            
         }
@@ -69,13 +69,13 @@ namespace ADO.Net.Presentation
             if (rs==DialogResult.Yes)
             {
                 bool kq = true;
-                loai.Del(ds, txtMaLoai.Text, out kq);
+                _loai.Del(_ds, txtMaLoai.Text, out kq);
                 ThongBaoKetQua(kq);
 
                 txtMaLoai.Text = "";
                 txtTenLoai.Text = "";
 
-                Reset(ds);
+                Reset(_ds);
             }
             else
             {
@@ -87,9 +87,9 @@ namespace ADO.Net.Presentation
         private void button5_Click(object sender, EventArgs e)
         {
             bool kq = true;
-            loai.Update(ds, txtMaLoai.Text, txtTenLoai.Text, out kq);
+            _loai.Update(_ds, txtMaLoai.Text, txtTenLoai.Text, out kq);
             ThongBaoKetQua(kq); ;
-            Reset(ds);
+            Reset(_ds);
         }
         private void Reset(List<Model.LoaiBean> ds)
         {
@@ -111,19 +111,24 @@ namespace ADO.Net.Presentation
 
         private void button4_Click(object sender, EventArgs e)
         {
-            List<Model.LoaiBean> LstTimKiem = new List<Model.LoaiBean>();
+            List<Model.LoaiBean> lstTimKiem = new List<Model.LoaiBean>();
             string key = Microsoft.VisualBasic.Interaction.InputBox("Nhập tên loại cần tìm", "Tìm Kiếm", "");
-            LstTimKiem= loai.TimKiem(ds, key);
-            Reset(LstTimKiem);
+            lstTimKiem= _loai.TimKiem(_ds, key);
+            Reset(lstTimKiem);
 
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            frmInLoai f = new frmInLoai();
+            FrmInLoai f = new FrmInLoai();
             this.Hide();
             f.ShowDialog();
             this.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
         }
     }
 }

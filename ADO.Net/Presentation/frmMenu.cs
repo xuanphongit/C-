@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ADO.Net.Presentation
 {
-    public partial class frmMenu : Form
+    public partial class FrmMenu : Form
     {
-        public frmMenu()
+        public FrmMenu()
         {
             InitializeComponent();
         }

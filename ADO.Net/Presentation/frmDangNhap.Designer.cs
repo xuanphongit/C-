@@ -1,6 +1,6 @@
 ﻿namespace ADO.Net.Presentation
 {
-    partial class frmDangNhap
+    partial class FrmDangNhap
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FrmDangNhap
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "FrmDangNhap";
             this.Text = "frmDangNhap";
+            this.Load += new System.EventHandler(this.FrmDangNhap_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

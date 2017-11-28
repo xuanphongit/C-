@@ -20,7 +20,7 @@ namespace BaiThucHanh2_LinQ
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             bo.DungChung ch = new bo.DungChung();
-            bindingSource1.DataSource = bo.DungChung.db.NHanViens;
+            bindingSource1.DataSource = bo.DungChung.Db.NHanViens;
             dataGridView1.DataSource = bindingSource1;
             txtMaNv.DataBindings.Add("text", bindingSource1, "manv");
             txtHoTen.DataBindings.Add("text", bindingSource1, "hoten");
@@ -37,7 +37,7 @@ namespace BaiThucHanh2_LinQ
         private void btnXoa_Click(object sender, EventArgs e)
         {
             bindingSource1.RemoveCurrent();
-            bo.DungChung.db.SubmitChanges();
+            bo.DungChung.Db.SubmitChanges();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace BaiThucHanh2_LinQ
             try
             {
                 bindingSource1.EndEdit(); ;
-                bo.DungChung.db.SubmitChanges();
+                bo.DungChung.Db.SubmitChanges();
             }
             catch (Exception tt)
             {
@@ -58,7 +58,7 @@ namespace BaiThucHanh2_LinQ
             string st = Microsoft.VisualBasic.Interaction.InputBox(
             "Nhap ma nhan vien:", "Tim Kiem", "", 100, 100);
             //Sử dụng câu lẹnh LINQ đề tìm nhân viên
-            var q = from p in bo.DungChung.db.NHanViens
+            var q = from p in bo.DungChung.Db.NHanViens
                     where p.Manv == st
                     select p;
             if (q.Count() == 0)

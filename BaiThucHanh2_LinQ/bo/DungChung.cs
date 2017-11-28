@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BaiThucHanh2_LinQ.bo
+﻿namespace BaiThucHanh2_LinQ.bo
 {
     class DungChung
     {
-        public static string manv, hoten, quyen;
-        public static string cs = "";
-        public static DataClasses1DataContext db;
-        public static frmMenu f;
+        public static string Manv;
+        public static string Hoten;
+        public static string Quyen;
+        public static string Cs = "";
+        public static DataClasses1DataContext Db;
+        public static frmMenu F;
         public DungChung()
         {
-            db = new DataClasses1DataContext();
+            Db = new DataClasses1DataContext();
         }
     }
 }

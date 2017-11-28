@@ -26,9 +26,9 @@ namespace BaiThucHanh2_LinQ
                 string ten = txtTen.Text;
                 string pass = txtPass.Text;
 
-                bo.DungChung.cs = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", server, tencsdl, ten, pass);
-                bo.DungChung.db = new DataClasses1DataContext(bo.DungChung.cs);
-                bo.DungChung.db.Connection.Open();
+                bo.DungChung.Cs = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", server, tencsdl, ten, pass);
+                bo.DungChung.Db = new DataClasses1DataContext(bo.DungChung.Cs);
+                bo.DungChung.Db.Connection.Open();
 
                 frmMenu f = new frmMenu();
                 this.Hide();

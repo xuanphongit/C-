@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 namespace ADO.Net.Model
 {
@@ -11,7 +8,7 @@ namespace ADO.Net.Model
         public int Add(string maloai, string tenloai)
         {
             string sql = "insert into loai values(@ml,@tl)";
-            SqlCommand cmd = new SqlCommand(sql, DungChung.cn);
+            SqlCommand cmd = new SqlCommand(sql, DungChung.Cn);
 
             SqlParameter ts1 = new SqlParameter("@ml", maloai);
             SqlParameter ts2 = new SqlParameter("@tl", tenloai);
@@ -22,10 +19,10 @@ namespace ADO.Net.Model
             return cmd.ExecuteNonQuery();
 
         }
-        public List<LoaiBean> getloai()
+        public List<LoaiBean> Getloai()
         {
             string sql = "select * from loai";
-            SqlCommand cmd = new SqlCommand(sql, DungChung.cn);
+            SqlCommand cmd = new SqlCommand(sql, DungChung.Cn);
             SqlDataReader rs = cmd.ExecuteReader();
             List<LoaiBean> ds = new List<LoaiBean>();
             //Duyen qa rs
@@ -45,7 +42,7 @@ namespace ADO.Net.Model
         public int Xoa(String ma)
         {
             String sql = "delete from loai where maloai=@maloai";
-            SqlCommand cmd = new SqlCommand(sql, DungChung.cn);
+            SqlCommand cmd = new SqlCommand(sql, DungChung.Cn);
 
             SqlParameter ts = new SqlParameter("@maloai", ma);
 
@@ -59,7 +56,7 @@ namespace ADO.Net.Model
         public int Update(string ma,string tenloai)
         {
             String sql = "update loai set tenloai=@tenloai where maloai=@maloai";
-            SqlCommand cmd = new SqlCommand(sql, DungChung.cn);
+            SqlCommand cmd = new SqlCommand(sql, DungChung.Cn);
             SqlParameter ts = new SqlParameter("@tenloai", tenloai);
             SqlParameter ts2 = new SqlParameter("@maloai", ma);
 

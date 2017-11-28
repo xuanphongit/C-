@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ADO.Net.Presentation
 {
-    public partial class frmDangNhap : Form
+    public partial class FrmDangNhap : Form
     {
-        public frmDangNhap()
+        public FrmDangNhap()
         {
             InitializeComponent();
+        }
+
+        private void FrmDangNhap_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

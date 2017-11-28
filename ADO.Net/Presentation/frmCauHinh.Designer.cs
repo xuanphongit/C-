@@ -1,6 +1,6 @@
 ﻿namespace ADO.Net.Presentation
 {
-    partial class frmCauHinh
+    partial class FrmCauHinh
     {
         /// <summary>
         /// Required designer variable.
@@ -88,7 +88,7 @@
             this.Controls.Add(this.txtDb);
             this.Controls.Add(this.txtSv);
             this.Controls.Add(this.button1);
-            this.Name = "frmCauHinh";
+            this.Name = "FrmCauHinh";
             this.Text = "frmCauHinh";
             this.ResumeLayout(false);
             this.PerformLayout();
