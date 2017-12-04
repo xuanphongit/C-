@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
 
 namespace BaiThucHanh2ADO.NET.Presentation
 {
@@ -21,8 +15,10 @@ namespace BaiThucHanh2ADO.NET.Presentation
         {
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(
-                new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", FrmBanHang._));
-            this.reportViewer1.RefreshReport();
+                new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", FrmBanHang.DanhSach));
+            ReportParameter MaHoaDon = new ReportParameter("MaHoaDon", FrmBanHang.maHd.ToString());
+            reportViewer1.LocalReport.SetParameters(MaHoaDon);
+            reportViewer1.RefreshReport();
 
             
         }

@@ -153,6 +153,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\BaiThucHanh2ADO.NET.Model.ChiTietHoaDonBean.datasource" />
+    <None Include="Properties\DataSources\BaiThucHanh2ADO.NET.Model.HienThiHoaDonBean.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

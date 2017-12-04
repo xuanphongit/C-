@@ -20,13 +20,14 @@ namespace BaiThucHanh2ADO.NET.Presentation
         HoaDonBo _hoaDonBo=new HoaDonBo();
         ChiTietHoaDonBo _chiTietHoaDonBo=new ChiTietHoaDonBo();
 
-        List<HienThiHoaDonBean> _danhSach=new List<HienThiHoaDonBean>();
+        public static List<HienThiHoaDonBean> DanhSach=new List<HienThiHoaDonBean>();
         List<HangBean> _danhSachHang=new List<HangBean>();
         List<BanBean> _danhSachBan=new List<BanBean>();
         List<HoaDonBean> _danhSacHoaDonBeans=new List<HoaDonBean>();
         List<ChiTietHoaDonBean> _danhSaChiTietHoaDonBeans=new List<ChiTietHoaDonBean>();
-        
+        public  static  List<ChiTietHoaDonBean> DanhSachChiTietHoaDonBeansByMaBan=new List<ChiTietHoaDonBean>();
         public static string Tenban, Maban;
+        public static long maHd;
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -116,9 +117,12 @@ namespace BaiThucHanh2ADO.NET.Presentation
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
-            //FrmInHoaDon f=new FrmInHoaDon();
+            maHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());
+            DanhSachChiTietHoaDonBeansByMaBan = _chiTietHoaDonBo.GetListByMaHd(_danhSaChiTietHoaDonBeans,
+                _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString()));
+            FrmInHoaDon f=new FrmInHoaDon();
             Hide();
-            //f.ShowDialog();
+            f.ShowDialog();
 
             Show();
             
@@ -126,8 +130,9 @@ namespace BaiThucHanh2ADO.NET.Presentation
 
         public void HienThiHoaDon()
         { //Lấy về thông tin của hóa đơn của bàn vừa chọn trên LstBan
-            _danhSach = _hienThiHoaDonBo.GetList(LstBan.SelectedValue.ToString());
-            dataGridView1.DataSource = _danhSach; //Hiển thị hóa đơn ra lưới
+           
+            DanhSach = _hienThiHoaDonBo.GetList(LstBan.SelectedValue.ToString());
+            dataGridView1.DataSource = DanhSach; //Hiển thị hóa đơn ra lưới
         }
     }
 }

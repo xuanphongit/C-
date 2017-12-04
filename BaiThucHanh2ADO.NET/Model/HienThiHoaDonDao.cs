@@ -11,7 +11,8 @@ namespace BaiThucHanh2ADO.NET.Model
             string sql = "select * from VHienThiHoaDon where MaBan=@maBan";
             SqlCommand cmd=new SqlCommand(sql,DungChung.Cn);
             cmd.Parameters.Add(new SqlParameter("@maBan", maBan));
-          SqlDataReader rs = cmd.ExecuteReader();
+          
+            SqlDataReader rs = cmd.ExecuteReader();
             while (rs.Read())
             {
                 HienThiHoaDonBean bean=new HienThiHoaDonBean(
@@ -20,7 +21,8 @@ namespace BaiThucHanh2ADO.NET.Model
                     long.Parse(rs["Gia"].ToString()),
                     long.Parse(rs["SoLuongMua"].ToString()),
                     long.Parse(rs["ThanhTien"].ToString()),
-                    rs["MaBan"].ToString());
+                    rs["MaBan"].ToString()
+                   );
                 danhSach.Add(bean);
             }
             rs.Close();
