@@ -25,6 +25,13 @@ namespace BaiThucHanh2ADO.NET.Model
             return danhSach;
         }
 
+        public int TraTien(long maHd)
+        {
+            string sql = "UPDATE HoaDon SET DaTraTien = 1 WHERE MaHD = @MaHD";
+            SqlCommand cmd=new SqlCommand(sql,DungChung.Cn);
+            cmd.Parameters.Add(new SqlParameter("@MaHD", maHd));
+            return cmd.ExecuteNonQuery();
+        }
         public int Add(long maHd, string maNv, string maBan, DateTime ngayBan, bool daTraTien)
         {
             string sql = "insert into HoaDon values(@maHd,@maNv,@maBan,@ngayBan,@daTraTien)";

@@ -30,10 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ChiTietHoaDonBeanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.ChiTietHoaDonBeanBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ChiTietHoaDonBeanBindingSource
+            // 
+            this.ChiTietHoaDonBeanBindingSource.DataSource = typeof(BaiThucHanh2ADO.NET.Model.ChiTietHoaDonBean);
             // 
             // reportViewer1
             // 
@@ -44,18 +48,14 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "BaiThucHanh2ADO.NET.Presentation.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(284, 261);
+            this.reportViewer1.Size = new System.Drawing.Size(765, 409);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // ChiTietHoaDonBeanBindingSource
-            // 
-            this.ChiTietHoaDonBeanBindingSource.DataSource = typeof(BaiThucHanh2ADO.NET.Model.ChiTietHoaDonBean);
             // 
             // FrmInHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(765, 409);
             this.Controls.Add(this.reportViewer1);
             this.Name = "FrmInHoaDon";
             this.Text = "FrmInHoaDon";

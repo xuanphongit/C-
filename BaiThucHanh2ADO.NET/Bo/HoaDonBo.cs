@@ -25,7 +25,7 @@ namespace BaiThucHanh2ADO.NET.Bo
             }
             else
             {
-                return 0;
+                return -1;
             }
         }
 
@@ -37,6 +37,10 @@ namespace BaiThucHanh2ADO.NET.Bo
             return danhSach;
         }
 
+        public void TraTien(long maHd)
+        {
+            _hoaDonDao.TraTien(maHd);
+        }
     }
    
 }

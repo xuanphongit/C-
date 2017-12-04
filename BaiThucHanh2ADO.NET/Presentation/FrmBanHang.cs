@@ -54,9 +54,12 @@ namespace BaiThucHanh2ADO.NET.Presentation
             CboTenHang.DisplayMember = "TenHang";
             CboTenHang.ValueMember = "MaHang";
             CboTenHang.Text = "";
+            LstBan.SelectedValue = "1";
             _finished = true;
             txtNhanVien.Text = DungChung.NhanVien;
             txtNgayBan.Text= DateTime.Now.ToShortDateString();
+            
+           
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -84,16 +87,17 @@ namespace BaiThucHanh2ADO.NET.Presentation
 
         private void btnBan_Click(object sender, EventArgs e)
         {
-            string maHang = CboTenHang.SelectedValue.ToString();
+            string maHang = CboTenHang.SelectedValue.ToString();//Lấy mã hàng hiện tại
             
-            HangBean hangBean = _hangBo.GetHang(_danhSachHang, maHang);
+            HangBean hangBean = _hangBo.GetHang(_danhSachHang, maHang);//Lấy hàng về
             bool kq=_hangBo.MuaHang(_danhSachHang, maHang, long.Parse(txtSLTrongKho.Text), long.Parse(txtSLMua.Text));
-            //OK
-            long maxSoHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());
-            if (maxSoHd==0)
+            //Giảm số lượng trong kho
+            long maxSoHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());//Tìm hóa đơn của bản,nếu chưa có trả về 0
+            if (maxSoHd==-1)
             {
-               
-                _hoaDonBo.Add(_danhSacHoaDonBeans, maxSoHd+1, DungChung.NhanVien, LstBan.SelectedValue.ToString(), DateTime.Now, false);
+                maxSoHd = _danhSacHoaDonBeans.Count+1;
+                _hoaDonBo.Add(_danhSacHoaDonBeans, maxSoHd, DungChung.NhanVien, LstBan.SelectedValue.ToString(), DateTime.Now, false);
+
             }
             long maxSoCtHd = 1;
             if (_danhSaChiTietHoaDonBeans.Any())
@@ -123,7 +127,8 @@ namespace BaiThucHanh2ADO.NET.Presentation
             FrmInHoaDon f=new FrmInHoaDon();
             Hide();
             f.ShowDialog();
-
+            _hoaDonBo.TraTien(maHd);
+            LstBan.SelectedValue = "1";
             Show();
             
         }
