@@ -109,6 +109,7 @@
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX2.TabIndex = 4;
             this.buttonX2.Text = "Cancel";
+            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
             // 
             // FrmLogin
             // 

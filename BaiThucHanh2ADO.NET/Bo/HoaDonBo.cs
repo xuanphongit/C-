@@ -41,6 +41,24 @@ namespace BaiThucHanh2ADO.NET.Bo
         {
             _hoaDonDao.TraTien(maHd);
         }
+
+        public List<HoaDonBean> GetHoaDonByDate(List<HoaDonBean> ds, DateTime dateTime)
+        {
+            var q = from s in ds
+                where s.NgayBan.Equals(dateTime)
+                select s;
+            return q.ToList();
+        }
+
+        public List<HoaDonBean> ChuyenBan(List<HoaDonBean> ds, string maBanMoi, long maHd)
+        {
+            var q = from s in ds
+                where s.MaHoaDon==maHd
+            select s;
+            q.First().MaBan = maBanMoi;
+            _hoaDonDao.ChuyenBan(maHd, maBanMoi);
+            return ds;
+        }
     }
    
 }

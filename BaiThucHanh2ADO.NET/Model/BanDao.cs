@@ -23,5 +23,33 @@ namespace BaiThucHanh2ADO.NET.Model
             dataReader.Close();
             return dsBanBeans;
         }
+
+        public int Them(string maBan, string Tenban, int soghe)
+        {
+            string sql = "INSERT INTO Ban VALUES(@MaBan,@TenBan,@SoGhe)";
+            SqlCommand cmd=new SqlCommand(sql,DungChung.Cn);
+            cmd.Parameters.Add(new SqlParameter("@MaBan", maBan));
+            cmd.Parameters.Add(new SqlParameter("@TenBan", Tenban));
+            cmd.Parameters.Add(new SqlParameter("@SoGhe", soghe));
+            return cmd.ExecuteNonQuery();
+        }
+
+        public int Xoa(string maBan)
+        {
+            string sql = "DELETE FROM Ban WHERE MaBan=@MaBan";
+            SqlCommand cmd = new SqlCommand(sql, DungChung.Cn);
+            cmd.Parameters.Add(new SqlParameter("@MaBan", maBan));
+            return cmd.ExecuteNonQuery();
+        }
+
+        public int Update(string maBan, string tenban, int soghe)
+        {
+            string sql = "UPDATE Ban SET TenBan=@TenBan,SoGhe=@SoGhe WHERE MaBan=@MaBan";
+            SqlCommand cmd=new SqlCommand(sql,DungChung.Cn);
+            cmd.Parameters.Add(new SqlParameter("@MaBan", maBan));
+            cmd.Parameters.Add(new SqlParameter("@TenBan", tenban));
+            cmd.Parameters.Add(new SqlParameter("@SoGhe", soghe));
+            return cmd.ExecuteNonQuery();
+        }
     }
 }

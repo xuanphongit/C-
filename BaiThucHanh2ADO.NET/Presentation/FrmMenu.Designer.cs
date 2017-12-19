@@ -120,25 +120,26 @@
             // theoNgàyToolStripMenuItem
             // 
             this.theoNgàyToolStripMenuItem.Name = "theoNgàyToolStripMenuItem";
-            this.theoNgàyToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.theoNgàyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.theoNgàyToolStripMenuItem.Text = "Theo Ngày";
+            this.theoNgàyToolStripMenuItem.Click += new System.EventHandler(this.theoNgàyToolStripMenuItem_Click);
             // 
             // theoThángToolStripMenuItem
             // 
             this.theoThángToolStripMenuItem.Name = "theoThángToolStripMenuItem";
-            this.theoThángToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.theoThángToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.theoThángToolStripMenuItem.Text = "Theo Tháng";
             // 
             // theoNămToolStripMenuItem
             // 
             this.theoNămToolStripMenuItem.Name = "theoNămToolStripMenuItem";
-            this.theoNămToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.theoNămToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.theoNămToolStripMenuItem.Text = "Theo Năm";
             // 
             // hàngTồnKhoToolStripMenuItem
             // 
             this.hàngTồnKhoToolStripMenuItem.Name = "hàngTồnKhoToolStripMenuItem";
-            this.hàngTồnKhoToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.hàngTồnKhoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.hàngTồnKhoToolStripMenuItem.Text = "Hàng Tồn Kho";
             // 
             // tìmKiếmToolStripMenuItem

@@ -1,11 +1,11 @@
 ﻿using System.Data.SqlClient;
 
-namespace BaiThucHanh2ADO.NET.Model
+namespace KiemTra.Model.Dao
 {
     public class DungChung
     {
         public static SqlConnection Cn;
-        public static string NhanVien,quyen;
+       
         public void KetNoi(string sv, string db, string un, string pass)
         {
             var st =

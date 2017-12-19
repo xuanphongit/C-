@@ -1,4 +1,4 @@
-﻿namespace DevComponents
+﻿namespace Cafe.DevComponents
 {
     internal class DotNetBar
     {

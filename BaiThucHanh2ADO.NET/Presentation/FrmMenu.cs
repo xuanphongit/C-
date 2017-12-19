@@ -37,5 +37,12 @@ namespace BaiThucHanh2ADO.NET.Presentation
             f.ShowDialog();
             Show();
         }
+
+        private void theoNgàyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmThongKeNgay ngay=new FrmThongKeNgay();
+            ngay.ShowDialog();
+
+        }
     }
 }

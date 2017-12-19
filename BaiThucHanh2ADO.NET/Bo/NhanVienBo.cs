@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using BaiThucHanh2ADO.NET.Model;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace BaiThucHanh2ADO.NET.Bo
 {
@@ -10,18 +13,26 @@ namespace BaiThucHanh2ADO.NET.Bo
         NhanVienDao _nhanVienDao=new NhanVienDao();
         public List<NhanVienBean> GetList() => _nhanVienDao.GetList();
 
-        public bool KiemTraDangNhap(String user,String pass)
+        public bool KiemTraDangNhap(String user,String pass,out string quyen)
         {
+            String passMD5 = MaHoaOk(pass);
             var q = from n in GetList()
-                    where n.MaNv.Equals(user) && n.MatKhau.Equals(pass)
+                    where n.MaNv.Equals(user) && n.MatKhau.Equals(passMD5)
                     select n;
             if (q.Count()!=0)
             {
+                quyen = q.First().Quyen;
                 return true;
             }
+            quyen = "";
             return false;
         }
 
+        public string MaHoaOk(string input)
+        {
+            String output = MaHoa("xuanphong", input);
+            return output;
+        }
         public List<NhanVienBean> Add(List<NhanVienBean> danhSach,string maNv, string hoTen, string diaChi,
             string matKhau, string quyen,out bool kq)
         {
@@ -31,8 +42,8 @@ namespace BaiThucHanh2ADO.NET.Bo
             if (!q.Any())
             {
               
-                danhSach.Add(new NhanVienBean(maNv,hoTen,diaChi,matKhau,quyen));
-                _nhanVienDao.Add(maNv, hoTen, diaChi, matKhau, quyen);
+                danhSach.Add(new NhanVienBean(maNv,hoTen,diaChi,MaHoaOk(matKhau),quyen));
+                _nhanVienDao.Add(maNv, hoTen, diaChi, MaHoaOk(matKhau), quyen);
                 kq = true;
             }
             else
@@ -73,9 +84,9 @@ namespace BaiThucHanh2ADO.NET.Bo
             {
                 nhanVienBeans.First().HoTen = hoTen;
                 nhanVienBeans.First().DiaChi = diaChi;
-                nhanVienBeans.First().MatKhau = matKhau;
+                nhanVienBeans.First().MatKhau = MaHoaOk(matKhau);
                 nhanVienBeans.First().Quyen = quyen;
-                _nhanVienDao.Edit(maNv, hoTen, diaChi, matKhau, quyen);
+                _nhanVienDao.Edit(maNv, hoTen, diaChi, MaHoaOk(matKhau), quyen);
                 kq = true;
             }
             else
@@ -93,5 +104,23 @@ namespace BaiThucHanh2ADO.NET.Bo
             var lstTimKiem = q.ToList();
             return lstTimKiem;
         }
+        public string MaHoa(string key, string toEncrypt)
+        {
+            byte[] keyArray;
+            byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
+            MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+            keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+            TripleDESCryptoServiceProvider tdes =
+            new TripleDESCryptoServiceProvider();
+            tdes.Key = keyArray;
+            tdes.Mode = CipherMode.ECB;
+            tdes.Padding = PaddingMode.PKCS7;
+            ICryptoTransform cTransform = tdes.CreateEncryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(
+                toEncryptArray, 0, toEncryptArray.Length);
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+        }
+
+        
     }
 }

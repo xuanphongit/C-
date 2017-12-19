@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HDTT3;
+using Cafe.Bo;
+
 
 namespace Cafe
 {
@@ -27,9 +28,9 @@ namespace Cafe
                 string tencsdl = txtTenCsdl.Text;
                 string ten = txtTen.Text;
                 string pass = txtPass.Text;
-                HDTT3.Bo.DungChung.cs = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", server, tencsdl, ten, pass);
-                HDTT3.Bo.DungChung.db = new DataClasses1DataContext(HDTT3.Bo.DungChung.cs);
-                HDTT3.Bo.DungChung.db.Connection.Open();// Ket noi den csdl
+                DungChung.cs = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}", server, tencsdl, ten, pass);
+                DungChung.db = new DataClasses1DataContext(DungChung.cs);
+                DungChung.db.Connection.Open();// Ket noi den csdl
                 //MessageBox.Show("OK");
                 Form1 f = new Form1();
 

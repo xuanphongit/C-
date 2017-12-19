@@ -63,10 +63,12 @@
     <Compile Include="Bo\HienThiHoaDonBo.cs" />
     <Compile Include="Bo\HoaDonBo.cs" />
     <Compile Include="Bo\NhanVienBo.cs" />
+    <Compile Include="Bo\VThongKeBo.cs" />
     <Compile Include="Model\BanBean.cs" />
     <Compile Include="Model\BanDao.cs" />
     <Compile Include="Model\ChiTietHoaDonBean.cs" />
     <Compile Include="Model\ChiTietHoaDonDao.cs" />
+    <Compile Include="Model\ChuyenSoSangChu.cs" />
     <Compile Include="Model\DungChung.cs" />
     <Compile Include="Model\HangBean.cs" />
     <Compile Include="Model\HangDao.cs" />
@@ -76,11 +78,13 @@
     <Compile Include="Model\HoaDonDao.cs" />
     <Compile Include="Model\NhanVienBean.cs" />
     <Compile Include="Model\NhanVienDao.cs" />
-    <Compile Include="Presentation\Form1.cs">
+    <Compile Include="Model\VThongKeBean.cs" />
+    <Compile Include="Model\VThongKeDao.cs" />
+    <Compile Include="Presentation\FrmBan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Presentation\FrmBan.Designer.cs">
+      <DependentUpon>FrmBan.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\FrmBanHang.cs">
       <SubType>Form</SubType>
@@ -100,6 +104,12 @@
     <Compile Include="Presentation\FrmInHoaDon.Designer.cs">
       <DependentUpon>FrmInHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\FrmInThongKeNgay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmInThongKeNgay.Designer.cs">
+      <DependentUpon>FrmInThongKeNgay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,10 +128,22 @@
     <Compile Include="Presentation\FrmNhanVien.Designer.cs">
       <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\FrmThongKeNgay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmThongKeNgay.Designer.cs">
+      <DependentUpon>FrmThongKeNgay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FrmThongKeThang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmThongKeThang.Designer.cs">
+      <DependentUpon>FrmThongKeThang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Presentation\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\FrmBan.resx">
+      <DependentUpon>FrmBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\FrmBanHang.resx">
       <DependentUpon>FrmBanHang.cs</DependentUpon>
@@ -132,6 +154,9 @@
     <EmbeddedResource Include="Presentation\FrmInHoaDon.resx">
       <DependentUpon>FrmInHoaDon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmInThongKeNgay.resx">
+      <DependentUpon>FrmInThongKeNgay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,7 +166,14 @@
     <EmbeddedResource Include="Presentation\FrmNhanVien.resx">
       <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmThongKeNgay.resx">
+      <DependentUpon>FrmThongKeNgay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmThongKeThang.resx">
+      <DependentUpon>FrmThongKeThang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Report1.rdlc" />
+    <EmbeddedResource Include="Presentation\Report2.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -154,6 +186,7 @@
     </Compile>
     <None Include="Properties\DataSources\BaiThucHanh2ADO.NET.Model.ChiTietHoaDonBean.datasource" />
     <None Include="Properties\DataSources\BaiThucHanh2ADO.NET.Model.HienThiHoaDonBean.datasource" />
+    <None Include="Properties\DataSources\BaiThucHanh2ADO.NET.Model.VThongKeBean.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -175,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

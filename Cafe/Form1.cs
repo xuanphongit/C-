@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cafe;
+using Cafe.Bo;
 
 namespace Cafe
 {
@@ -21,10 +22,10 @@ namespace Cafe
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            listBox1.DataSource = HDTT3.Bo.DungChung.db.Bans;
+            listBox1.DataSource = DungChung.db.Bans;
             listBox1.DisplayMember = "TenBan";
             listBox1.ValueMember = "MaBan";
-            var q = from s in HDTT3.Bo.DungChung.db.QuanLiCafes
+            var q = from s in DungChung.db.QuanLiCafes
                     where s.DaTraTien == false
                     select
                     s;
@@ -35,7 +36,7 @@ namespace Cafe
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string maban = listBox1.SelectedValue.ToString();
-            var q = from s in HDTT3.Bo.DungChung.db.QuanLiCafes
+            var q = from s in DungChung.db.QuanLiCafes
                     where s.MaBan.Equals(maban) && s.DaTraTien == false
                     select s;
             ds = q.ToList();

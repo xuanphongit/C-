@@ -27,7 +27,7 @@ namespace BaiThucHanh2ADO.NET.Presentation
         List<ChiTietHoaDonBean> _danhSaChiTietHoaDonBeans=new List<ChiTietHoaDonBean>();
         public  static  List<ChiTietHoaDonBean> DanhSachChiTietHoaDonBeansByMaBan=new List<ChiTietHoaDonBean>();
         public static string Tenban, Maban;
-        public static long maHd;
+        public static long MaHd;
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -90,9 +90,9 @@ namespace BaiThucHanh2ADO.NET.Presentation
             string maHang = CboTenHang.SelectedValue.ToString();//Lấy mã hàng hiện tại
             
             HangBean hangBean = _hangBo.GetHang(_danhSachHang, maHang);//Lấy hàng về
-            bool kq=_hangBo.MuaHang(_danhSachHang, maHang, long.Parse(txtSLTrongKho.Text), long.Parse(txtSLMua.Text));
-            //Giảm số lượng trong kho
-            long maxSoHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());//Tìm hóa đơn của bản,nếu chưa có trả về 0
+            bool kq=_hangBo.MuaHang(_danhSachHang, maHang, long.Parse(txtSLTrongKho.Text), long.Parse(txtSLMua.Text));//Giảm số lượng trong kho
+
+            long maxSoHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());//Tìm hóa đơn của bản,nếu chưa có trả về -1
             if (maxSoHd==-1)
             {
                 maxSoHd = _danhSacHoaDonBeans.Count+1;
@@ -107,8 +107,26 @@ namespace BaiThucHanh2ADO.NET.Presentation
             }
             //Lay so hoa don cua bang hoa don
             long shd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());
-            _chiTietHoaDonBo.Add(_danhSaChiTietHoaDonBeans,maxSoCtHd,CboTenHang.SelectedValue.ToString(),shd,long.Parse(txtSLMua.Text),long.Parse(txtSLMua.Text)*long.Parse(txtGia.Text));
-            HienThiHoaDon();
+            if (long.Parse(txtSLMua.Text)>long.Parse(txtSLTrongKho.Text))
+            {
+                MessageBox.Show("Ko đủ hàng!");
+            }
+            else
+            {
+                if (_chiTietHoaDonBo.KiemTraTrungHang(_danhSaChiTietHoaDonBeans, shd, CboTenHang.SelectedValue.ToString()))
+
+                {
+                    _chiTietHoaDonBo.TangSoLuong(_danhSaChiTietHoaDonBeans, shd, CboTenHang.SelectedValue.ToString(), long.Parse(txtSLMua.Text));
+                }
+                else
+                {
+                    _chiTietHoaDonBo.Add(_danhSaChiTietHoaDonBeans, maxSoCtHd, CboTenHang.SelectedValue.ToString(), shd, long.Parse(txtSLMua.Text), long.Parse(txtSLMua.Text) * long.Parse(txtGia.Text));
+                }
+
+
+                HienThiHoaDon();
+                CboTenHang_SelectedIndexChanged(null, null);
+            }
 
         }
 
@@ -121,16 +139,44 @@ namespace BaiThucHanh2ADO.NET.Presentation
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
-            maHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());
+            MaHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());
             DanhSachChiTietHoaDonBeansByMaBan = _chiTietHoaDonBo.GetListByMaHd(_danhSaChiTietHoaDonBeans,
                 _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString()));
             FrmInHoaDon f=new FrmInHoaDon();
             Hide();
             f.ShowDialog();
-            _hoaDonBo.TraTien(maHd);
+            _hoaDonBo.TraTien(MaHd);
             LstBan.SelectedValue = "1";
             Show();
             
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            bool kq=_chiTietHoaDonBo.Delete(_danhSaChiTietHoaDonBeans, _socthd);
+            if (!kq)
+            {
+                MessageBox.Show(@"Mời chọn hàng trên lưới trước");
+            }
+        }
+        long _socthd;
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _socthd = long.Parse
+            (dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+        public static string tienchu="";
+
+        private void btnChuyenBan_Click(object sender, EventArgs e)
+        {
+            DialogResult kq = MessageBox.Show("Chuyển Bàn", "Bạn muốn chuyển hết không!", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+            if (kq==DialogResult.Yes)
+            {
+                string maban = Microsoft.VisualBasic.Interaction.InputBox("Nhập mã bàn cần chuyển đến", "Chuyển bàn ", "");
+                _hoaDonBo.ChuyenBan(_danhSacHoaDonBeans,maban, _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString()))
+                ;
+            }
         }
 
         public void HienThiHoaDon()
@@ -138,6 +184,13 @@ namespace BaiThucHanh2ADO.NET.Presentation
            
             DanhSach = _hienThiHoaDonBo.GetList(LstBan.SelectedValue.ToString());
             dataGridView1.DataSource = DanhSach; //Hiển thị hóa đơn ra lưới
+            MaHd = _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString());
+            DanhSachChiTietHoaDonBeansByMaBan = _chiTietHoaDonBo.GetListByMaHd(_danhSaChiTietHoaDonBeans,
+                _hoaDonBo.KiemTraHoaDon(_danhSacHoaDonBeans, LstBan.SelectedValue.ToString()));
+            long TongTien = DanhSachChiTietHoaDonBeansByMaBan.Sum(p => p.ThanhTien);
+            txtTongTien.Text = TongTien.ToString();
+            tienchu = "Bằng chữ : " + ChuyenSoSangChu.convert(decimal.Parse(TongTien.ToString()));
+            txtTongTienChu.Text = tienchu;
         }
     }
 }

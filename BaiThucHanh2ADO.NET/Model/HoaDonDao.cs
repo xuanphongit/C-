@@ -43,5 +43,14 @@ namespace BaiThucHanh2ADO.NET.Model
             cmd.Parameters.Add(new SqlParameter("@daTraTien", daTraTien));
             return cmd.ExecuteNonQuery();
         }
+
+        public int ChuyenBan(long maHd, string maBanMoi)
+        {
+            string sql = "UPDATE HoaDon SET MaBan=@MaBan WHERE MaHD=@MaHD";
+            SqlCommand cmd=new SqlCommand(sql,DungChung.Cn);
+            cmd.Parameters.Add(new SqlParameter("@MaBan", maBanMoi));
+            cmd.Parameters.Add(new SqlParameter("@MaHD",maHd));
+            return cmd.ExecuteNonQuery();
+        }
     }
 }

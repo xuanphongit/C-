@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaiThucHanh2LinQ", "BaiThuc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaiThucHanh2ADO.NET", "BaiThucHanh2ADO.NET\BaiThucHanh2ADO.NET.csproj", "{DF6441DB-7E5F-4351-ABD0-1C07761A34C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KiemTra", "KiemTra\KiemTra.csproj", "{5F977F6B-49E5-407D-A282-A27A91D845CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DF6441DB-7E5F-4351-ABD0-1C07761A34C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF6441DB-7E5F-4351-ABD0-1C07761A34C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF6441DB-7E5F-4351-ABD0-1C07761A34C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F977F6B-49E5-407D-A282-A27A91D845CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F977F6B-49E5-407D-A282-A27A91D845CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F977F6B-49E5-407D-A282-A27A91D845CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F977F6B-49E5-407D-A282-A27A91D845CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

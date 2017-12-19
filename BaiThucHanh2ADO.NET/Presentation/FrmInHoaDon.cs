@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using BaiThucHanh2ADO.NET.Model;
 using Microsoft.Reporting.WinForms;
 
 namespace BaiThucHanh2ADO.NET.Presentation
@@ -16,8 +17,15 @@ namespace BaiThucHanh2ADO.NET.Presentation
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(
                 new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", FrmBanHang.DanhSach));
-            ReportParameter MaHoaDon = new ReportParameter("MaHoaDon", FrmBanHang.maHd.ToString());
-            reportViewer1.LocalReport.SetParameters(MaHoaDon);
+            
+
+           
+            ReportParameter manv = new ReportParameter("NhanVien", DungChung.NhanVien);
+            ReportParameter tienchu = new ReportParameter("TienChu", FrmBanHang.tienchu);
+
+
+            reportViewer1.LocalReport.SetParameters(manv);
+            reportViewer1.LocalReport.SetParameters(tienchu);
             reportViewer1.RefreshReport();
 
             

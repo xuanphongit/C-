@@ -15,9 +15,11 @@ namespace BaiThucHanh2ADO.NET.Presentation
         NhanVienBo _nhanVienBo=new NhanVienBo();
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            if (_nhanVienBo.KiemTraDangNhap(txtUser.Text,txtPass.Text))
+            
+            if (_nhanVienBo.KiemTraDangNhap(txtUser.Text,txtPass.Text,out DungChung.quyen))
             {
                 DungChung.NhanVien = txtUser.Text;
+                
                 FrmMenu frmMenu=new FrmMenu();
                 Hide();
                 frmMenu.ShowDialog();
@@ -27,6 +29,11 @@ namespace BaiThucHanh2ADO.NET.Presentation
             {
                 MessageBox.Show(Resources.FrmLogin_Error);
             }
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

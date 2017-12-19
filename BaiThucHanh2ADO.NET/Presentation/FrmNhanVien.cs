@@ -45,36 +45,64 @@ namespace BaiThucHanh2ADO.NET.Presentation
         }
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            if (txtMaNv.Enabled==false)
+            if (!DungChung.quyen.Equals("Admin"))
             {
-                txtMaNv.Enabled = true;
+                MessageBox.Show("Bạn phải là Admin");
+            }
+            else
+            {
+                if (txtMaNv.Enabled == false)
+                {
+                    txtMaNv.Enabled = true;
+                    txtMaNv.Text = "";
+                    txtHoten.Text = "";
+                    txtDiaChi.Text = "";
+                    txtPass.Text = "";
+                    txtQuyen.Text = "";
+                }
+                else
+                {
+
+                    _lst = _nhanVienBo.Add(DsNHanViens, txtMaNv.Text, txtHoten.Text, txtDiaChi.Text, txtPass.Text, txtQuyen.Text, out _kq);
+                    ThongBao(_kq);
+                    ResetData(_lst);
+                }
+            }
+           
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            if (DungChung.quyen.Equals("Admin"))
+            {
+                _lst = _nhanVienBo.Delete(DsNHanViens, txtMaNv.Text, out _kq);
+                ThongBao(_kq);
+                ResetData(_lst);
                 txtMaNv.Text = "";
                 txtHoten.Text = "";
                 txtDiaChi.Text = "";
                 txtPass.Text = "";
                 txtQuyen.Text = "";
+
             }
             else
             {
-                
-                _lst= _nhanVienBo.Add(DsNHanViens, txtMaNv.Text, txtHoten.Text, txtDiaChi.Text, txtPass.Text, txtQuyen.Text,out _kq);
-                ThongBao(_kq);
-                ResetData(_lst);
+                MessageBox.Show("Bạn phải là Admin");
             }
-        }
-
-        private void buttonX2_Click(object sender, EventArgs e)
-        {
-            _lst = _nhanVienBo.Delete(DsNHanViens, txtMaNv.Text, out _kq);
-            ThongBao(_kq);
-            ResetData(_lst);
         }
 
         private void buttonX3_Click(object sender, EventArgs e)
         {
-            _lst = _nhanVienBo.Update(DsNHanViens, txtMaNv.Text,txtHoten.Text,txtDiaChi.Text,txtPass.Text,txtQuyen.Text, out _kq);
-            ThongBao(_kq);
-            ResetData(_lst);
+            if (DungChung.quyen.Equals("Admin"))
+            {
+                _lst = _nhanVienBo.Update(DsNHanViens, txtMaNv.Text, txtHoten.Text, txtDiaChi.Text, txtPass.Text, txtQuyen.Text, out _kq);
+                ThongBao(_kq);
+                ResetData(_lst);
+            }
+            else
+            {
+                MessageBox.Show("Bạn phải là Admin");
+            }
         }
 
         private void buttonX6_Click(object sender, EventArgs e)

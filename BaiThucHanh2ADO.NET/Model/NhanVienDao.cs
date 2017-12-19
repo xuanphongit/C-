@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace BaiThucHanh2ADO.NET.Model
 {
@@ -68,5 +71,8 @@ namespace BaiThucHanh2ADO.NET.Model
 
             return sqlCommand.ExecuteNonQuery();
         }
+        
+
+        
     }
 }

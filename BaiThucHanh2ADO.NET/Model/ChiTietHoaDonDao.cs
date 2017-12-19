@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace BaiThucHanh2ADO.NET.Model
@@ -34,6 +35,24 @@ namespace BaiThucHanh2ADO.NET.Model
             cmd.Parameters.Add(new SqlParameter("@SoLuongMua", soLuongMua));
             cmd.Parameters.Add(new SqlParameter("@ThanhTien", thanhTien));
             cmd.Parameters.Add(new SqlParameter("@MaHD", maHd));
+            return cmd.ExecuteNonQuery();
+        }
+
+        public int Delete(long maSoCtHd)
+        {
+            string sql = "DELETE FROM ChiTietHoaDon WHERE MaCtHd = @MaCtHd";
+            SqlCommand cmd=new SqlCommand(sql,DungChung.Cn);
+            cmd.Parameters.Add(new SqlParameter("@MaCtHd", maSoCtHd));
+            return cmd.ExecuteNonQuery();
+        }
+
+        public int UpdateSoLuong(long maHd, long soluong, String maHang)
+        {
+            string sql = "UPDATE ChiTietHoaDon SET SoLuongMua=@SoLuongMua WHERE MaHD=@MaHD and MaHang=@MaHang";
+            SqlCommand cmd=new SqlCommand(sql,DungChung.Cn);
+            cmd.Parameters.Add(new SqlParameter("@SoLuongMua", soluong));
+            cmd.Parameters.Add(new SqlParameter("@MaHD", maHd));
+            cmd.Parameters.Add(new SqlParameter("@MaHang", maHang));
             return cmd.ExecuteNonQuery();
         }
     }
