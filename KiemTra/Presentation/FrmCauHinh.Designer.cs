@@ -66,7 +66,7 @@
             this.txtDb.PreventEnterBeep = true;
             this.txtDb.Size = new System.Drawing.Size(247, 20);
             this.txtDb.TabIndex = 3;
-            this.txtDb.Text = "KT.Net";
+            this.txtDb.Text = "MaiXuanPhong";
             // 
             // txtUser
             // 

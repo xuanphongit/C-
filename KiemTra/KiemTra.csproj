@@ -34,8 +34,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,27 +51,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Bean\HangBean.cs" />
+    <Compile Include="Model\Bean\HoaDonBean.cs" />
+    <Compile Include="Model\Bean\OToBean.cs" />
+    <Compile Include="Model\Bean\ViewBean.cs" />
+    <Compile Include="Model\Bo\HangBo.cs" />
+    <Compile Include="Model\Bo\HoaDonBo.cs" />
+    <Compile Include="Model\Bo\OToBo.cs" />
+    <Compile Include="Model\Dao\HangDao.cs" />
+    <Compile Include="Model\Dao\HoaDonDao.cs" />
+    <Compile Include="Model\Dao\OToDao.cs" />
+    <Compile Include="Presentation\FrmIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmIn.Designer.cs">
+      <DependentUpon>FrmIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\FrmCauHinh.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\FrmCauHinh.Designer.cs">
       <DependentUpon>FrmCauHinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\FrmMain.cs">
+    <Compile Include="Presentation\FrmBanXe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\FrmMain.Designer.cs">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <Compile Include="Presentation\FrmBanXe.Designer.cs">
+      <DependentUpon>FrmBanXe.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Dao\DungChung.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\FrmIn.resx">
+      <DependentUpon>FrmIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\FrmCauHinh.resx">
       <DependentUpon>FrmCauHinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\FrmMain.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\FrmBanXe.resx">
+      <DependentUpon>FrmBanXe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Report1.rdlc" />
+    <EmbeddedResource Include="Presentation\Report2.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -77,6 +102,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\KiemTra.Model.Bean.HoaDonBean.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,10 +116,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Bean\" />
-    <Folder Include="Model\Bo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

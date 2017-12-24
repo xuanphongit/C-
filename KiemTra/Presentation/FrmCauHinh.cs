@@ -17,7 +17,7 @@ namespace KiemTra.Presentation
             {
                 DungChung dc = new DungChung();
                 dc.KetNoi(txtSv.Text, txtDb.Text, txtUser.Text, txtPass.Text);
-                FrmMain f = new FrmMain();
+                FrmBanXe f = new FrmBanXe();
                 Hide();
                 f.ShowDialog();
                 Close();
